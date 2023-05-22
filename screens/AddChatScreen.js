@@ -1,5 +1,5 @@
-import { Text, View } from "react-native";
-import React, { Component, useState } from "react";
+import { Text, View, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
 import { Input } from "@rneui/themed";
 import { db } from "../config/firebase";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -7,6 +7,28 @@ import { Button } from "@rneui/base";
 
 export default function AddChatScreen({ navigation }) {
   const [input, setInput] = useState("");
+  //
+ 
+
+
+
+  //
+
+  // const [userList, setUserList] = useState([]);
+  // const fetchUserList = async () => {
+  //   try {
+  //     const snapshot = await db.collection("users").get();
+  //     const users = snapshot.docs.map((doc) => doc.data());
+  //     console.log(users); // In ra dữ liệu người dùng
+  //     setUserList(users);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchUserList();
+  // }, []);
 
   const createChats = async () => {
     await db
@@ -33,6 +55,8 @@ export default function AddChatScreen({ navigation }) {
           value={input}
           rightIcon={<Icon name="close" size={20} />}
         />
+
+
         <Button
           onPress={createChats}
           title="Create a new Chat"

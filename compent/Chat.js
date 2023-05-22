@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import React, { Component, useEffect, useState } from "react";
 import { ListItem, Avatar } from "@rneui/base";
 import { auth, db } from "../config/firebase";
-export default function Chat({ id, chatName, enterChat, navigation }) {
+export default function Chat({ id, chatName, enterChat, messages, navigation }) {
   const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Chat({ id, chatName, enterChat, navigation }) {
   return (
     <ListItem
       top={0}
-      onPress={() => enterChat(id, chatName)}
+      onPress={() => enterChat(id, chatName, messages)}
       key={id}
       bottomDivider
       containerStyle={{
@@ -41,7 +41,7 @@ export default function Chat({ id, chatName, enterChat, navigation }) {
       />
       <ListItem.Content>
         <ListItem.Title>{chatName}</ListItem.Title>
-        <ListItem.Subtitle numberOfLines={1}>abc</ListItem.Subtitle>
+        <ListItem.Subtitle numberOfLines={1}>{messages}</ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>
   );

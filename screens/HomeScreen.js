@@ -1,13 +1,15 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { auth, db } from "../config/firebase";
 import { Avatar } from "@rneui/base";
 import Icon from "react-native-vector-icons/Ionicons";
 import Chat from "../compent/Chat";
 import firebase from "firebase/compat";
 import { ScrollView } from "react-native-gesture-handler";
+import Swipeable from "react-native-swipeable";
 
 export default function HomeScreen({ navigation, route, chatName }) {
+
   const [activityMinutes, setActivityMinutes] = useState(0);
   const [isInactive, setIsInactive] = useState(false);
   const [inactiveStart, setInactiveStart] = useState(null);
@@ -75,6 +77,7 @@ export default function HomeScreen({ navigation, route, chatName }) {
       navigation.replace("LoginScreen");
     });
   };
+
 
   useLayoutEffect(() => {
     navigation.setOptions({

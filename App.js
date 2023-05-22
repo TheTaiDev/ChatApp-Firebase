@@ -13,7 +13,7 @@ function ChatStack() {
         options={{
           headerShown: true,
 
-          title: "LoginScreen",
+          title: "Login",
           headerStyle: {
             backgroundColor: "#2F80ED",
           },
@@ -29,7 +29,7 @@ function ChatStack() {
         options={{
           headerShown: true,
 
-          title: "SignupScreen",
+          title: "Signup",
           headerStyle: {
             backgroundColor: "#2F80ED",
           },
@@ -61,7 +61,7 @@ function ChatStack() {
         options={{
           headerShown: true,
 
-          title: "AddChat",
+          title: "Create a new chat",
           headerStyle: {
             backgroundColor: "#2F80ED",
           },
