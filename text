@@ -1,0 +1,183 @@
+<FlatList
+  data={messages.slice(0).reverse()}
+  keyExtractor={({ id }) => id}
+  renderItem={({ item: { id, data } }) => (
+    data.email === auth.currentUser.email ? (
+        <View
+          key={id}
+          style={{
+            padding: 10,
+            backgroundColor: "#ECECEC",
+            alignSelf: "flex-end",
+            borderRadius: 20,
+            marginRight: 15,
+            marginBottom: 20,
+            maxWidth: "80%",
+            position: "relative",
+          }}
+        >
+          <Avatar
+            containerStyle={{
+              bottom: -15,
+              right: -5,
+              position: "absolute",
+            }}
+            bottom={-15}
+            right={-5}
+            position="absolute"
+            rounded
+            size={25}
+            source={{
+              uri: data.photoURL,
+            }}
+          />
+          <Text
+            style={{
+              color: "black",
+              fontWeight: 500,
+              marginLeft: 10,
+              fontSize: 16,
+            }}
+          >
+            {" "}
+            {data.message}{" "}
+          </Text>
+          {/*  */}
+        </View>
+      ) : (
+        //   sender
+      
+        <View
+          key={id}
+          style={{
+            padding: 10,
+            backgroundColor: "#2F80ED",
+            alignSelf: "flex-start",
+            borderRadius: 20,
+            marginLeft: 15,
+            maxWidth: "80%",
+            marginBottom: 20,
+            color: "#FFFFFF",
+            position: "relative",
+          }}
+        >
+          <Avatar
+            containerStyle={{
+              bottom: -15,
+              right: -5,
+              position: "absolute",
+            }}
+            bottom={-15}
+            right={-5}
+            position="absolute"
+            rounded
+            size={25}
+            source={{
+              uri: data.photoURL,
+            }}
+            // source={{
+            //   uri: data.photoURL,
+            // }}
+          />
+          <Text
+            style={{
+              color: "#FFFFFF",
+              fontWeight: 500,
+              marginLeft: 10,
+              fontSize: 16,
+            }}
+          >
+            {" "}
+            {data.message}{" "}
+          </Text>
+          {/* <Text
+            style={{
+              left: 10,
+              paddingRight: 10,
+              fontSize: 10,
+              color: "#FFFF",
+            }}
+          >
+            {" "}
+            {data.displayName}{" "}
+          </Text> */}
+        </View>
+    // Hiển thị tin nhắn
+      ))}
+  contentContainerStyle={{
+    paddingTop: 15,
+    flexGrow: 1,
+    justifyContent: 'flex-end',
+  }}
+  inverted={true}
+/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<SafeAreaView style={{ flex: 1, backgroundColor: "#FFFF" }}>
+  <StatusBar style="light" />
+  <KeyboardAvoidingView
+    style={{ flex: 1 }}
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    keyboardVerticalOffset={90}
+  >
+    <FlatList
+      data={messages.slice(0).reverse()}
+      keyExtractor={({ id }) => id}
+      renderItem={({ item: { id, data } }) => (
+        // Hiển thị tin nhắn
+        // ...
+      )}
+      contentContainerStyle={{
+        paddingTop: 15,
+        flexGrow: 1,
+        justifyContent: "flex-end",
+      }}
+      inverted
+    />
+
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%",
+        padding: 20,
+      }}
+    >
+      <TextInput
+        style={{
+          bottom: 0,
+          height: 40,
+          marginRight: 15,
+          borderTopColor: "transparent",
+          backgroundColor: "#ECECEC",
+          flex: 1,
+          padding: 10,
+          color: "grey",
+          borderRadius: 30,
+        }}
+        value={input}
+        onChangeText={(text) => setInput(text)}
+        onSubmitEditing={sendMess}
+        placeholder="Enter Messenger"
+      />
+      <TouchableOpacity onPress={sendMess} activeOpacity={0.5}>
+        <Ionicons name="send" size={24} color={"#2F80ED"} />
+      </TouchableOpacity>
+    </View>
+
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ flex: 1 }} />
+    </TouchableWithoutFeedback>
+  </KeyboardAvoidingView>
+</SafeAreaView>
